@@ -1,0 +1,7 @@
+{
+    "random_poem" : "https://poetrydb.org/random",
+    "rhyme" : "https://api.datamuse.com/words?ml={word}&rel_rhy={word}&max={number}",
+    "synonym" : "https://api.datamuse.com/words?rel_syn={word}&max={number}",
+    "adjectives" : "https://api.datamuse.com/words?rel_jjb={word}&max={number}",
+    "check" : "https://api.datamuse.com/words?mdd={word}&max={number}"
+}
