@@ -1,12 +1,18 @@
 import requests
 import json
 
-with open("urls.json", "r") as file:
-    URL = json.load(file)
+
+def setup_config(source, option=None):
+    with open(source, "r") as file:
+        config = json.load(file)
+    if option:
+        return config[option]
+    else:
+        return config
 
 
-def get_text(type, phrase=None, variety=5):
-    url = URL[type]
+def get_text(url, type, phrase=None, variety=5):
+    url = url[type]
     text = requests.get(url.format(word=phrase, number=variety)).json()
     return text
 
