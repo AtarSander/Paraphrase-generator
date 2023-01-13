@@ -59,8 +59,40 @@
               ],
               "linecount": "4"
             }
-          ]
-
+          ],
+          "text4_medium" :   [{
+            "title": "Nature affects to be sedate",
+            "author": "Emily Dickinson",
+            "lines": [
+              "Nature affects to be sedate",
+              "Upon occasion, grand",
+              "But let our observation shut",
+              "Her practices extend",
+              "",
+              "To Necromancy and the Trades",
+              "Remote to understand",
+              "Behold our spacious Citizen",
+              "Unto a Juggler turned --"
+            ],
+            "linecount": "8"
+          }
+        ],
+        "text5_short" : [ {
+          "title": "The Mountain sat upon the Plain",
+          "author": "Emily Dickinson",
+          "lines": [
+            "The Mountain sat upon the Plain",
+            "In his tremendous Chair --",
+            "His observation omnifold,",
+            "His inquest, everywhere --",
+            "",
+            "The Seasons played around his knees",
+            "Like Children round a sire --",
+            "Grandfather of the Days is He",
+            "Of Dawn, the Ancestor --"
+          ],
+          "linecount": "8"
+        }
+        ]
     }
-
 }
