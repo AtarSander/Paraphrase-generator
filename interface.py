@@ -16,6 +16,10 @@ class Interface:
         self.changed_text = None
         self.config = setup_config(config)
 
+    def start(self):
+        while True:
+            self.choose_option()
+
     def get_option(self, limit):
         try:
             option = input("Wybierz opcję: ")
@@ -84,6 +88,9 @@ class Interface:
         pass
 
     def choose_paraphrase(self):
+        if not self.text:
+            print("There is no text to paraphrase")
+            self.choose_option()
         print("""
         1. Switch rhymes
         2. Use synonyms
@@ -119,10 +126,10 @@ class Interface:
 
     def choose_words_to_modify(self):
         print("""
-        1. Modify last word in a verse.
-        2. Modify first word in a verse.
-        3. Modify random word in a verse.
-        4. Modify every word in every verse(VERY slow).""")
+        1. Modify last word in every verse.
+        2. Modify first word in every verse.
+        3. Modify random word in every verse.
+        4. Modify every word in every verse(VERY slow).\n""")
         self.get_option(5)
         option = self.option
         if option == "1":
@@ -147,3 +154,7 @@ class Interface:
 
     def end_program():
         sys.exit()
+
+
+if __name__ == "__main__":
+    Interface("config.json").start()
