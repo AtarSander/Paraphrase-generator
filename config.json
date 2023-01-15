@@ -4,7 +4,8 @@
         "rhyme" : "https://api.datamuse.com/words?ml={word}&rel_rhy={word}&max={number}",
         "synonym" : "https://api.datamuse.com/words?rel_syn={word}&max={number}",
         "adjective" : "https://api.datamuse.com/words?rel_jjb={word}&max={number}&md=ps",
-        "check" : "https://api.datamuse.com/words?mdd={word}&max={number}"
+        "check" : "https://api.datamuse.com/words?mdd={word}&max={number}",
+        "song" : "ThTDjNzh23BasysAT3KxLUdX7VIgRGANwcNxBnXMKd13ADTp1ykrFpMM4Q0pbs28"
     },
     "test_text": {
         "text1_medium" : [
@@ -60,7 +61,8 @@
               "linecount": "4"
             }
           ],
-          "text4_medium" :   [{
+          "text4_medium" :   [
+            {
             "title": "Nature affects to be sedate",
             "author": "Emily Dickinson",
             "lines": [
@@ -77,7 +79,8 @@
             "linecount": "8"
           }
         ],
-        "text5_short" : [ {
+        "text5_short" : [
+          {
           "title": "The Mountain sat upon the Plain",
           "author": "Emily Dickinson",
           "lines": [
@@ -93,6 +96,144 @@
           ],
           "linecount": "8"
         }
+        ],
+        "song1" : {
+        "title": "Starboy",
+        "author": "The Weekend",
+        "lines": [
+            "Ayy",
+            "",
+            "I'm tryna put you in the worst mood, ah",
+            "P1 cleaner than your church shoes, ah",
+            "Milli point two just to hurt you, ah",
+            "All red Lamb' just to tease you, ah",
+            "None of these toys on lease too, ah",
+            "Made your whole year in a week too, yah",
+            "Main bitch outta your league too, ah",
+            "Side bitch outta your league too, ah",
+            "House so empty, need a centerpiece",
+            "Twenty racks a table, cut from ebony",
+            "Cut that ivory into skinny pieces",
+            "Then she clean it with her face, man, I love my baby, ah",
+            "You talkin' money, need a hearin' aid",
+            "You talkin' 'bout me, I don't see the shade",
+            "Switch up my style, I take any lane",
+            "I switch up my cup, I kill any pain",
+            "",
+            "(Ha-ha-ha-ha-ha, ha-ha-ha-ha-ha)",
+            "Look what you've done",
+            "(Ha-ha-ha-ha-ha, ha-ha-ha-ha-ha)",
+            "I'm a motherfuckin' starboy",
+            "(Ha-ha-ha-ha-ha, ha-ha-ha-ha-ha)",
+            "Look what you've done",
+            "(Ha-ha-ha-ha-ha, ha-ha-ha-ha-ha)",
+            "I'm a motherfuckin' starboy",
+            "",
+            "Every day, a nigga try to test me, ah",
+            "Every day, a nigga try to end me, ah",
+            "Pull off in that Roadster SV, ah",
+            "Pockets overweight, gettin' hefty, ah",
+            "Comin' for the king, that's a far cry, I",
+            "I come alive in the fall time, I",
+            "The competition, I don't really listen",
+            "I'm in the blue Mulsanne, bumpin' New Edition",
+            "You might also like",
+            "House so empty, need a centerpiece",
+            "Twenty racks a table, cut from ebony",
+            "Cut that ivory into skinny pieces",
+            "Then she clean it with her face, man, I love my baby, ah",
+            "You talkin' money, need a hearin' aid",
+            "You talkin' 'bout me, I don't see the shade",
+            "Switch up my style, I take any lane",
+            "I switch up my cup, I kill any pain",
+            "",
+            "(Ha-ha-ha-ha-ha, ha-ha-ha-ha-ha)",
+            "Look what you've done",
+            "(Ha-ha-ha-ha-ha, ha-ha-ha-ha-ha)",
+            "I'm a motherfuckin' starboy",
+            "(Ha-ha-ha-ha-ha, ha-ha-ha-ha-ha)",
+            "Look what you've done",
+            "(Ha-ha-ha-ha-ha, ha-ha-ha-ha-ha)",
+            "I'm a motherfuckin' starboy",
+            "",
+            "Let a nigga brag Pitt",
+            "Legend of the fall, took the year like a bandit",
+            "Bought Mama a crib and a brand new wagon",
+            "Now she hit the grocery shop lookin' lavish",
+            "Star Trek roof in that Wraith of Khan",
+            "Girls get loose when they hear this song",
+            "A hundred on the dash get me close to God",
+            "We don't pray for love, we just pray for cars",
+            "House so empty, need a centerpiece",
+            "Twenty racks a table, cut from ebony",
+            "Cut that ivory into skinny pieces",
+            "Then she clean it with her face, man, I love my baby, ah",
+            "You talkin' money, need a hearin' aid",
+            "You talkin' 'bout me, I don't see the shade",
+            "Switch up my style, I take any lane",
+            "I switch up my cup, I kill any pain",
+            "",
+            "(Ha-ha-ha-ha-ha, ha-ha-ha-ha-ha)",
+            "Look what you've done",
+            "(Ha-ha-ha-ha-ha, ha-ha-ha-ha-ha)",
+            "I'm a motherfuckin' starboy",
+            "(Ha-ha-ha-ha-ha, ha-ha-ha-ha-ha)",
+            "Look what you've done",
+            "(Ha-ha-ha-ha-ha, ha-ha-ha-ha-ha)",
+            "I'm a motherfuckin' starboy",
+            "(Ha-ha-ha-ha-ha, ha-ha-ha-ha-ha)",
+            "Look what you've done",
+            "(Ha-ha-ha-ha-ha, ha-ha-ha-ha-ha)",
+            "I'm a motherfuckin' starboy",
+            "(Ha-ha-ha-ha-ha, ha-ha-ha-ha-ha)",
+            "Look what you've done",
+            "(Ha-ha-ha-ha-ha, ha-ha-ha-ha-ha)",
+            "I'm a motherfuckin' starboy"
+        ]
+      }
+    },
+    "help" : {
+      "help_general" : [
+        "\n   1. Show help with longer explanations of options",
+        "   2. Open menu to choose what type of text to generate",
+        "   3. Load text from file given the path as an input",
+        "   4. Paraphrase the given text (change or add words while keeping the context)",
+        "   5. Exit the program",
+        "   Press 2 or 4 to get more information on this options",
+        "   Press any other key to continue\n"
+      ],
+      "help_generate_text" : [
+        "\n   1. Search for a song by entering its author name and the title(only english lyrics can be paraphrased)",
+        "   2. Generate random poem from Poetry DB database",
+        "   3. Go back to main menu",
+        "   Press any key to continue\n"
+      ],
+      "help_paraphrase" : [
+        "\n   Changed or added words will be highlighted in green.",
+        "   1. Switch rhymes to matching ones while trying to maintain meaning of the original word",
+        "   2. Switch words for their synonyms",
+        "   3. Add fitting adjective to describe the nouns",
+        "   4. Go back to main menu",
+        "   Press 1 to get more information on words to modify menu",
+        "   Press any other key to continue\n"
+      ],
+      "help_words_to_modify" : [
+        "\n   If a word is less than 4 characters or is not in the database it will stay unchanged",
+        "   1. Modify last word in every verse",
+        "   2. Modify first word in every verse",
+        "   3. Modify random word in every verse",
+        "   4. Modify every word in every verse (takes a lot of time)",
+        "   5. Go back to paraphrase menu",
+        "   Press 1 to get more information on accuracy menu",
+        "   Press any other key to continue\n"
+        ],
+
+      "help_accuracy" : [
+        "   1. High chance the phrase will keep its meaning, paraphrase will stay the same for the same input",
+        "   2. Medium chance the phrase will keep its meaning, paraphrase may stay the same for the same input",
+        "   3. Low chance the phrase will keep its meaning, paraphrase should not stay the same for the same input",
+        "   4. Go back to choosing which word in a verse to modify",
+        "   Press any key to continue\n"
         ]
     }
 }
