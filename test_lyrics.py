@@ -1,48 +1,34 @@
-from lyrics import Lyrics
+from lyrics import Lyrics, setup_config
+from song import Song
 
-TEXT2 = [
-  {
-    "title": "Prayer for Children",
-    "author": "William Cowper",
-    "lines": [
-      "Gracious Lord, our children see,",
-      "By Thy mercy we are free;",
-      "But shall these, alas! remain",
-      "Subjects still of Satan's reign?",
-      "Israel's young ones, when of old",
-      "Pharaoh threaten'd to withhold,",
-      "Then Thy messenger said, \"No;",
-      "Let the children also go!\"",
-      "",
-      "When the angel of the Lord,",
-      "Drawing forth his dreadful sword,",
-      "Slew with an avenging hand,",
-      "All the first-born of the land;",
-      "Then Thy people's door he pass'd,",
-      "Where the bloody sign was placed:",
-      "Hear us, now, upon our knees,",
-      "Plead the blood of Christ for these!"
-    ],
-    "linecount": "16"
-  }
-]
+CONFIG = setup_config("config.json")
+TEXT1 = CONFIG["test_text"]["text1_medium"]
+SONG1 = CONFIG["test_text"]["song1"]
 
 
 def test_Lyrics__str__():
-    example_poem = Lyrics(TEXT2)
-    assert str(example_poem) == "\n".join(TEXT2[0]["lines"])
+    example_poem = Lyrics(TEXT1)
+    assert str(example_poem) == "\n".join(TEXT1[0]["lines"])
 
 
 def test_Lyrics_author():
-    example_poem = Lyrics(TEXT2)
+    example_poem = Lyrics(TEXT1)
     assert example_poem.author() == "William Cowper"
 
 
 def test_Lyrics_title():
-    example_poem = Lyrics(TEXT2)
+    example_poem = Lyrics(TEXT1)
     assert example_poem.title() == "Prayer for Children"
 
 
 def test_Lyrics_lines():
-    example_poem = Lyrics(TEXT2)
-    assert example_poem.lines() == TEXT2[0]["lines"]
+    example_poem = Lyrics(TEXT1)
+    assert example_poem.lines() == TEXT1[0]["lines"]
+
+
+def test_Lyrics__str__song():
+    author = "the weekend"
+    title = "starboy"
+    example_song = Song(CONFIG["urls"]["song"], author, title)
+    example_lyric = Lyrics(example_song.get_text(), "song")
+    assert str(example_lyric) == "\n".join(SONG1["lines"])
