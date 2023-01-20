@@ -77,6 +77,12 @@ class Paraphrase:
         If word is longer than 4 letters fetches using get_text function and
         returns synonyms, rhymes or adjectives (according to option) of
         results. Max length of results according to variety.
+
+        :param word: word sent to API to get list of matching answers
+        :type word: str
+
+        :return: list of fetched answers
+        :rtype: List
         """
         results = []
         if len(word) >= 4:
@@ -94,6 +100,15 @@ class Paraphrase:
         adjective is false corrects it and return new_word else returns
         new_word without correction. If data is empty, returns None if
         adjective is false else returns word.
+
+        :param word: word that needs changing
+        :type word: str
+
+        :is_adjective: check if given word is adjective
+        :type is_adjective: bool
+
+        :return: random chosen word
+        :rtype: str
         """
         data = self.choose_words(word)
         if data:
@@ -115,6 +130,12 @@ class Paraphrase:
 
         Chooses which word in line to switch according to change param,
         switches it for a new one given by randomize_word method.
+
+        :line: line to paraphrase
+        :type line: list
+
+        :return: joined paraphrased line
+        :rtype: str
         """
         new_line = []
         if self.change == "all":
@@ -143,10 +164,20 @@ class Paraphrase:
         if true corrects new_word. Then if all is false new_word
         is inserted into line in index position and the line is returned.
         If all is true new_word, word tuple is returned.
+
+        :line: line to paraphrase
+        :type line: list
+
+        :index: index of the word before which the adjective is to be inserted
+        :type index: int
+
+        :all: variable to check if every word in line should get new adjective
+        :type all: bool
+
+        :return:
         """
         word = line[index]
         new_word = self.randomize_word(word, True)
-        # rewrite
         if new_word:
             if index == 0:
                 new_word = self.correct_upper("Capital letter", new_word)
@@ -167,6 +198,12 @@ class Paraphrase:
 
         Chooses to which word add the adjective according to change param, then
         inserts it using insert_adjective method.
+
+        :line: line to paraphrase
+        :type line: list
+
+        :return: joined paraphrased line
+        :rtype: str
         """
         words = line.split()
         new_line = words
@@ -192,6 +229,9 @@ class Paraphrase:
     def create_lyrics(self):
         """
         Returns final paraphrase changed_lyrics given every line in _lyrics.
+
+        :return: complete changed lyrics
+        :rtype: str
         """
         new_lyrics = []
         if self.option == "adjective":

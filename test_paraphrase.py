@@ -290,12 +290,12 @@ Of Predawn, the Ancestor --"""
 def test_Paraphrase_create_lyrics_adjectives_all():
     example_poem = Lyrics(TEXT2)
     generator = Paraphrase(CONFIG, example_poem, "adjective", "all", 1)
-    correct_lyrics = """Getting there is a low voice, not little understood by cell all,
+    crect = """Getting there is a low voice, not little understood by cell all,
 Haughty sent letter from try these desert-caves. It is the deafening roar
 Of the annual rent ice-cliff new which the golden sunbeams first call,
 Deep plunging dissolve into the vale--it is the full blast
 Own descending on the pines--the such torrents pece pour..."""
-    assert generator.create_lyrics() == correct_lyrics
+    assert generator.create_lyrics() == crect
 
 
 def test_Paraphrase_create_lyrics_adjectives_last():

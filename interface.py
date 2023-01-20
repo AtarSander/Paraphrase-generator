@@ -34,8 +34,10 @@ class Interface:
     """
     def __init__(self, config):
         self.option = None
+        self.title = None
         self.text = None
         self.paraphrase = None
+        self.paraphrases_database = {}
         self.config = setup_config(config)
 
     def start(self):
@@ -45,7 +47,7 @@ class Interface:
         while True:
             self.choose_option()
 
-    def get_option(self, limit=0, help=False):
+    def get_option(self, limit=0):
         """
         Gets menu option chosen by user/if help is true serves as a brief stop.
 
@@ -53,13 +55,13 @@ class Interface:
         It is intercepted and launches wrong_option function.
         """
         try:
+            self.option = None
             option = input("Select option: ")
-            if not help:
-                option = str(option)
-                option = option.strip(" ()-.")
-                if int(option) not in range(1, limit+1):
-                    raise WrongOptionTypeError
-                self.option = option
+            option = str(option)
+            option = option.strip(" ()-.")
+            if int(option) not in range(1, limit+1):
+                raise WrongOptionTypeError
+            self.option = option
         except WrongOptionTypeError:
             self.wrong_option()
         except ValueError:
@@ -77,20 +79,70 @@ class Interface:
         Prints main menu on the screen and checks which option was chosen.
         """
         print(self)
-        self.get_option(5)
+        self.get_option(6)
         option = self.option
         if option == "1":
             self.help()
         elif option == "2":
             self.generate_random_text()
         elif option == "3":
-            self.upload_text_from_file()
-        elif option == "4":
             self.choose_paraphrase()
+        elif option == "4":
+            self.add_to_database()
         elif option == "5":
+            self.search_in_database()
+        elif option == "6":
             self.end_program()
         else:
-            raise WrongOptionTypeError
+            self.choose_option()
+
+    def add_to_database(self):
+        """
+        Adds current paraphrased text to dictionary with title as key.
+        """
+        if self.title in self.paraphrases_database.keys():
+            self.text_in_paraphrase()
+        if self.paraphrase:
+            self.title = self.title.lower()
+            self.paraphrases_database[self.title] = self.paraphrase
+            print("Text added to database.")
+        else:
+            self.empty_paraphrase()
+
+    def text_in_paraphrase(self):
+        """
+        Prints an error message when text is already in the dictionary.
+        """
+        print("Text already in database!")
+        self.choose_option()
+
+    def empty_paraphrase(self):
+        """
+        Prints an error message when text paraphrase param is empty.
+        """
+        print("There isn't any paraphrase to save!")
+        self.choose_option()
+
+    def search_in_database(self):
+        """
+        Prints paraphrase from dictionary after inputing its title.
+        """
+        title = input("Enter title of saved paraphrase you want to print: ")
+        try:
+            title = title.lower()
+            if title in self.paraphrases_database.keys():
+                self.print_text(self.paraphrases_database[title])
+            else:
+                self.not_in_database()
+        except TypeError:
+            self.not_in_database()
+
+    def not_in_database(self):
+        """
+        Prints an error message when searched title isn't in the database.
+        """
+        print("Can't find this title in database!")
+        self.choose_option()
 
     def __str__(self):
         """
@@ -99,9 +151,10 @@ class Interface:
         description = """
         1. Help
         2. Generate text
-        3. Upload text from file
-        4. Paraphrase the text
-        5. Quit\n """
+        3. Paraphrase the text
+        4. Save current paraphrase to database
+        5. Search for paraphrase in database
+        6. Quit\n """
         return description
 
     def help(self):
@@ -114,11 +167,11 @@ class Interface:
         general_help = self.config["help"]["help_general"]
         general_help = "\n".join(general_help)
         print(general_help)
-        self.get_option(1000)
+        self.get_option(3)
         option = self.option
         if option == "2":
             self.generate_text_help()
-        elif option == "4":
+        elif option == "3":
             self.paraphrase_help()
         else:
             self.choose_option()
@@ -133,7 +186,7 @@ class Interface:
         paraphrase_help = self.config["help"]["help_paraphrase"]
         paraphrase_help = "\n".join(paraphrase_help)
         print(paraphrase_help)
-        self.get_option(1000)
+        self.get_option(2)
         option = self.option
         if option == "1":
             self.words_to_modify_help()
@@ -150,7 +203,7 @@ class Interface:
         words_to_modify_help = self.config["help"]["help_words_to_modify"]
         words_to_modify_help = "\n".join(words_to_modify_help)
         print(words_to_modify_help)
-        self.get_option(help=True)
+        self.get_option(2)
         option = self.option
         if option == "1":
             self.accuracy_help()
@@ -166,7 +219,7 @@ class Interface:
         accuracy_help = self.config["help"]["help_accuracy"]
         accuracy_help = "\n".join(accuracy_help)
         print(accuracy_help)
-        self.get_option(help=True)
+        self.get_option(1)
         self.choose_option()
 
     def generate_text_help(self):
@@ -178,7 +231,7 @@ class Interface:
         generate_text_help = self.config["help"]["help_generate_text"]
         generate_text_help = "\n".join(generate_text_help)
         print(generate_text_help)
-        self.get_option(help=True)
+        self.get_option(1)
         self.choose_option()
 
     def generate_random_text(self):
@@ -206,6 +259,9 @@ class Interface:
         Generates a random poem and sets it as the current text.
         """
         self.text = Lyrics(get_text(self.config["urls"], "random_poem"))
+        self.title = self.text.title()
+        print("\n")
+        print(self.title)
         print("\n")
         print(self.text)
 
@@ -225,15 +281,19 @@ class Interface:
         else:
             lyrics = Lyrics(text, "song")
             self.text = lyrics
+            self.title = self.text.title()
+            print("\n")
+            print(self.title)
             print("\n")
             print(self.text)
+            self.choose_option()
 
     def not_found(self):
         """
         Prints an error message when a song is not found.
         """
-        print("Sorry, couldn't find your song\nPress any key to continue")
-        self.get_option(help=True)
+        print("Sorry, couldn't find your song\nPress 1 to continue")
+        self.get_option(1)
 
     def choose_paraphrase(self):
         """
@@ -244,8 +304,7 @@ class Interface:
         the main menu.
         """
         if not self.text:
-            print("There is no text to paraphrase!")
-            self.choose_option()
+            self.no_lyrics()
         print("""
         1. Switch rhymes
         2. Use synonyms
@@ -261,6 +320,10 @@ class Interface:
             self.create_paraphrase("adjective")
         else:
             self.choose_option()
+
+    def no_lyrics(self):
+        print("There is no text to paraphrase!")
+        self.choose_option()
 
     def choose_accuracy(self):
         """
@@ -325,13 +388,19 @@ class Interface:
         paraphrase = Paraphrase(self.config["urls"], self.text,
                                 form, change, accuracy)
         self.paraphrase = paraphrase.create_lyrics()
+        self.print_text(self.paraphrase)
+        self.choose_option()
+
+    @staticmethod
+    def print_text(text):
+        """
+        Prints text
+        """
         print("\n")
-        print(self.paraphrase)
+        print(text)
 
-    def save_to_file():
-        pass
-
-    def end_program(self):
+    @staticmethod
+    def end_program():
         """
         Ends the program.
         """
@@ -339,4 +408,5 @@ class Interface:
 
 
 if __name__ == "__main__":
-    Interface("config.json").start()
+    UI = Interface("config.json")
+    UI.start()

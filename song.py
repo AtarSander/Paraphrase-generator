@@ -22,8 +22,11 @@ class Song:
     :param type: dict
     """
     def __init__(self, token, author, title):
-        self.genius_object = lg.Genius(token)
-        self.genius_object.remove_section_headers = True
+        try:
+            self.genius_object = lg.Genius(token, retries=50)
+            self.genius_object.remove_section_headers = True
+        except TimeoutError:
+            pass
         self._lyrics = None
         self._text = self.search_song(author, title)
 

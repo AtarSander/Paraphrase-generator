@@ -12,7 +12,7 @@ def setup_config(source, option=None):
     :param option: (optional) key to return specific value from json file
     :type option: str
 
-    :return: config: json object or specific value from json object
+    :return: json object or specific value from json object
     """
     with open(source, "r") as file:
         config = json.load(file)
@@ -24,7 +24,7 @@ def setup_config(source, option=None):
 
 def get_text(url, form, phrase=None, variety=5):
     """
-    Fetch text from specified url
+    Fetch data from specified url
 
     :param url: base url
     :type option: str

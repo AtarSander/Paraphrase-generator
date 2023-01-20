@@ -1,6 +1,5 @@
-from interface import Interface, WrongOptionTypeError
+from interface import Interface
 from lyrics import Lyrics, setup_config
-import pytest
 import builtins
 import lyrics as ls
 
@@ -25,18 +24,22 @@ def test_Interface_get_option_wrong_input(monkeypatch):
     def mock_input(_):
         return "6"
     monkeypatch.setattr(builtins, "input", mock_input)
-    with pytest.raises(WrongOptionTypeError):
-        example_ui.get_option(3)
+
+    def mock_choose_option(_):
+        return None
+    monkeypatch.setattr(Interface, "choose_option", mock_choose_option)
+    assert example_ui.get_option(3) == example_ui.wrong_option()
 
 
 def test_Interface__str__():
     example_ui = Interface("config.json")
     assert str(example_ui) == """
         1. Help
-        2. Generate random text
-        3. Upload text from file
-        4. Paraphrase the text
-        5. Quit\n """
+        2. Generate text
+        3. Paraphrase the text
+        4. Save current paraphrase to database
+        5. Search for paraphrase in database
+        6. Quit\n """
 
 
 def test_Interface_choose_option(monkeypatch):
@@ -59,10 +62,6 @@ def test_Interface_generate_random_text(monkeypatch):
            )
 
 
-def test_Interface_generate_random_song(monkeypatch):
-    pass
-
-
 def test_Interface_generate_random_poem(monkeypatch):
     example_ui = Interface("config.json")
 
@@ -79,11 +78,14 @@ def test_Interface_choose_paraphrase(monkeypatch):
 
     def mock_get_option(self, __):
         self.option = "1"
-
     monkeypatch.setattr(Interface, "get_option", mock_get_option)
+
+    def mock_choose_option(_):
+        pass
+    monkeypatch.setattr(Interface, "choose_option", mock_choose_option)
     assert (
         example_ui.choose_paraphrase() ==
-        example_ui.create_paraphrase("synonym")
+        example_ui.create_paraphrase("rhyme")
            )
 
 
@@ -110,9 +112,12 @@ def test_Interface_choose_paraphrase_wrong_input(monkeypatch):
 
     def mock_get_option(self, __):
         self.option = ["1"]
+
+    def mock_choose_option(_):
+        pass
+    monkeypatch.setattr(Interface, "choose_option", mock_choose_option)
     monkeypatch.setattr(Interface, "get_option", mock_get_option)
-    with pytest.raises(WrongOptionTypeError):
-        example_ui.choose_paraphrase()
+    assert example_ui.choose_paraphrase() == example_ui.wrong_option()
 
 
 def test_Interface_choose_accuracy(monkeypatch):

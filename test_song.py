@@ -6,7 +6,6 @@ CONFIG = setup_config("config.json")
 
 
 def test_Song_create():
-    # it comes through after reloading, something with api request
     author = "the weekend"
     title = "starboy"
     example_song = Song(CONFIG["urls"]["song"], author, title)

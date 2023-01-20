@@ -194,38 +194,39 @@
     },
     "help" : {
       "help_general" : [
-        "\n   1. Show help with longer explanations of options",
+        "\n 1. Show help with longer explanations of options",
         "   2. Open menu to choose what type of text to generate",
-        "   3. Load text from file given the path as an input",
-        "   4. Paraphrase the given text (change or add words while keeping the context)",
-        "   5. Exit the program",
-        "   Press 2 or 4 to get more information on this options",
-        "   Press any other key to continue\n"
+        "   3. Paraphrase the given text (change or add words while keeping the context)",
+        "   4. Saves current paraphrased text to database",
+        "   5. Search for paraphrase saved in database by inputing title",
+        "   6. Exit the program",
+        "   Press 2 or 3 to get more information on this options",
+        "   Press 1 to continue\n"
       ],
       "help_generate_text" : [
-        "\n   1. Search for a song by entering its author name and the title(only english lyrics can be paraphrased)",
+        "\n 1. Search for a song by entering its author name and the title(only english lyrics can be paraphrased)",
         "   2. Generate random poem from Poetry DB database",
         "   3. Go back to main menu",
-        "   Press any key to continue\n"
+        "   Press 1 to continue\n"
       ],
       "help_paraphrase" : [
-        "\n   Changed or added words will be highlighted in green.",
+        "\n Changed or added words will be highlighted in green.",
         "   1. Switch rhymes to matching ones while trying to maintain meaning of the original word",
         "   2. Switch words for their synonyms",
         "   3. Add fitting adjective to describe the nouns",
         "   4. Go back to main menu",
         "   Press 1 to get more information on words to modify menu",
-        "   Press any other key to continue\n"
+        "   Press 2 to continue\n"
       ],
       "help_words_to_modify" : [
-        "\n   If a word is less than 4 characters or is not in the database it will stay unchanged",
+        "\n If a word is less than 4 characters or is not in the database it will stay unchanged",
         "   1. Modify last word in every verse",
         "   2. Modify first word in every verse",
         "   3. Modify random word in every verse",
         "   4. Modify every word in every verse (takes a lot of time)",
         "   5. Go back to paraphrase menu",
         "   Press 1 to get more information on accuracy menu",
-        "   Press any other key to continue\n"
+        "   Press 2 to continue\n"
         ],
 
       "help_accuracy" : [
@@ -233,7 +234,7 @@
         "   2. Medium chance the phrase will keep its meaning, paraphrase may stay the same for the same input",
         "   3. Low chance the phrase will keep its meaning, paraphrase should not stay the same for the same input",
         "   4. Go back to choosing which word in a verse to modify",
-        "   Press any key to continue\n"
+        "   Press 1 to continue\n"
         ]
     }
 }

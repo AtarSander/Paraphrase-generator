@@ -1,0 +1,7 @@
+pip install lyricsgenius
+pip install termcolor
+pip install urllib3
+pip install sys
+pip install requests
+pip install json
+pip install random
