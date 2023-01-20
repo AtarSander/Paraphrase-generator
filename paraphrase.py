@@ -156,7 +156,7 @@ class Paraphrase:
             new_line[index] = self.randomize_word(new_line[index])
         return " ".join(new_line)
 
-    def insert_adjective(self, line, index, all=False):
+    def insert_adjective(self, line, index, is_all=False):
         """
         Inserts adjective into a line given the index.
 
@@ -184,10 +184,10 @@ class Paraphrase:
                 word = word.lower()
                 line[0] = word
             new_word = self.highlight_text(new_word)
-            if all:
+            if is_all:
                 return new_word, word
             line.insert(index, new_word)
-        if not all:
+        if not is_all:
             return line
         else:
             return word
