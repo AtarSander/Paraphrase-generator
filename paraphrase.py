@@ -174,7 +174,7 @@ class Paraphrase:
         :all: variable to check if every word in line should get new adjective
         :type all: bool
 
-        :return:
+        :return: line list or tuple of index and new_word
         """
         word = line[index]
         new_word = self.randomize_word(word, True)
